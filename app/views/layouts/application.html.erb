@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>JavascriptApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	
+  <head>
+    <title>BootstrapBlogSeriesTodoApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <%= render 'shared/navigation' %>
+
     <div id="main-container" class="container">
       <div class="row">
+        <div class="col-xs-12">
+          <% flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+          <% end -%>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-xs-3">
-          <h3>Erin's To do List</h3>
+          <h3>Erin's To Do list</h3>
         </div>
         <div class="col-xs-9">
           <%= yield %>
@@ -19,5 +28,5 @@
       </div>
     </div>
 
-</body>
+  </body>
 </html>
